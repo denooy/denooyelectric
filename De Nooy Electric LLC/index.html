@@ -1,36 +1,1671 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Electrical services for commercial and residential">
-    <meta name="keywords" content="electrician, electrical contractor, wiring, central Iowa, Sully, Grinnell, Pella, Newton, Marcus DeNooy, De Nooy">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeNooy Electric LLC</title>
-    <link rel="icon" type="image/png" href="images/faviconsocket.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De Nooy Electric – Honest Electrical Work by a Trusted Local Professional</title>
+
+  <!-- Google Fonts: Playfair Display (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS RESET & CUSTOM PROPERTIES
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0D2B4E;
+      --blue:       #1A5FA8;
+      --blue-mid:   #2578CC;
+      --sky:        #D6EAFB;
+      --sky-light:  #EDF5FD;
+      --amber:      #E07B28;
+      --amber-lt:   #FEF3E8;
+      --white:      #FFFFFF;
+      --off-white:  #F7FAFE;
+      --gray-100:   #F1F4F8;
+      --gray-300:   #D0D8E4;
+      --gray-500:   #7A8CA3;
+      --gray-700:   #3D5068;
+      --text:       #1C2B3A;
+
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'DM Sans', system-ui, sans-serif;
+
+      --shadow-sm:  0 2px 8px rgba(13,43,78,.08);
+      --shadow-md:  0 6px 24px rgba(13,43,78,.12);
+      --shadow-lg:  0 16px 48px rgba(13,43,78,.16);
+
+      --radius:     10px;
+      --radius-lg:  18px;
+      --transition: .22s ease;
+
+      --max-w:      1140px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(100%, var(--max-w));
+      margin-inline: auto;
+      padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+    }
+
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      background: var(--sky);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--gray-700);
+      max-width: 56ch;
+      line-height: 1.8;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .8rem 1.8rem;
+      border-radius: var(--radius);
+      font-family: var(--ff-body);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn:hover  { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(224,123,40,.4);
+    }
+    .btn-primary:hover {
+      background: #c96e21;
+      box-shadow: 0 6px 20px rgba(224,123,40,.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.6);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(26,95,168,.35);
+    }
+    .btn-blue:hover {
+      background: var(--navy);
+      box-shadow: 0 6px 20px rgba(26,95,168,.45);
+    }
+
+    /* ============================================================
+       TOP BAR
+    ============================================================ */
+    .topbar {
+      background: var(--navy);
+      color: rgba(255,255,255,.85);
+      font-size: .82rem;
+      font-weight: 500;
+      padding: .55rem 0;
+    }
+    .topbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .topbar a { color: rgba(255,255,255,.85); }
+    .topbar a:hover { color: var(--white); }
+    .topbar-left,
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .topbar-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    /* ============================================================
+       SITE HEADER / NAV
+    ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-300);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-block: .9rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--blue);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .logo-text { line-height: 1.2; }
+    .logo-name {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: block;
+    }
+    .logo-sub {
+      font-size: .7rem;
+      font-weight: 500;
+      color: var(--gray-500);
+      letter-spacing: .04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      padding: .45rem .75rem;
+      border-radius: 6px;
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav-links a:hover { color: var(--blue); background: var(--sky-light); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .nav-phone {
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--navy);
+    }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .3rem;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0 0 0 30%;
+      background: var(--navy);
+      z-index: 200;
+      padding: 2rem 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+      transform: translateX(100%);
+      transition: transform .3s ease;
+    }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav a {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      padding: .6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      display: block;
+    }
+    .mobile-nav a:hover { color: var(--white); }
+    .mobile-nav-close {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: .5rem;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #163E6D 55%, #1A5FA8 100%);
+      padding: clamp(4rem, 10vw, 8rem) 0 clamp(5rem, 12vw, 10rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative bolt SVG watermark */
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -40px;
+      width: 480px;
+      height: 480px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='55,5 20,55 45,55 35,95 80,40 55,40' fill='%23FFFFFF' opacity='0.04'/%3E%3C/svg%3E") no-repeat center / contain;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.9);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.12;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #F5B054;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.8);
+      max-width: 50ch;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .85rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .trust-pill {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.85);
+      font-size: .8rem;
+      font-weight: 500;
+      padding: .4rem .9rem;
+      border-radius: 999px;
+    }
+
+    /* Hero stat cards */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .stat-card {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+    .stat-card .stat-num {
+      font-family: var(--ff-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+    .stat-card .stat-label {
+      font-size: .8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .03em;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about { padding: clamp(3.5rem, 8vw, 6rem) 0; background: var(--off-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+      max-width: 420px;
+      margin-inline: auto;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      /* Placeholder colour since we don't have a real photo */
+      background: linear-gradient(135deg, #B8D4EF 0%, #6FA3D4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: linear-gradient(150deg, #1A5FA8 0%, #0D2B4E 100%);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .photo-placeholder svg { opacity: .25; }
+    .photo-placeholder p {
+      color: rgba(255,255,255,.5);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.25rem;
+      right: -1rem;
+      background: var(--amber);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .about-badge strong {
+      display: block;
+      font-size: 1.8rem;
+      font-family: var(--ff-display);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .about-badge span { font-size: .75rem; font-weight: 500; }
+
+    .about-content .section-lead { margin-bottom: 1.5rem; }
+
+    .about-points {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+    .about-point {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+    }
+    .point-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--sky);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+    .about-point p { font-size: .95rem; color: var(--gray-700); }
+    .about-point strong { color: var(--navy); }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+
+    .services-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 3rem;
+    }
+    .services-header .section-lead { margin-inline: auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .service-card:hover {
+      border-color: var(--blue-mid);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--sky);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .5rem;
+    }
+    .service-card p { font-size: .9rem; color: var(--gray-500); }
+
+    /* ============================================================
+       WHY CHOOSE US
+    ============================================================ */
+    .why {
+      padding: clamp(3.5rem, 8vw, 6rem) 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .why::before {
+      content: '';
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.03);
+    }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .why .section-label {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.8);
+    }
+    .why .section-title { color: var(--white); }
+    .why .section-lead  { color: rgba(255,255,255,.7); }
+
+    .why-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+    }
+    .why-check {
+      width: 28px;
+      height: 28px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .why-item h4 {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .why-item p { font-size: .85rem; color: rgba(255,255,255,.6); }
+
+    .why-visual {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .why-big-num {
+      font-family: var(--ff-display);
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .why-big-label {
+      font-size: 1rem;
+      color: rgba(255,255,255,.6);
+      margin-top: .5rem;
+      margin-bottom: 2rem;
+    }
+    .why-divider { border-color: rgba(255,255,255,.1); margin-bottom: 2rem; }
+
+    .service-area-box {
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: left;
+    }
+    .service-area-box h4 {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: .65rem;
+    }
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+    }
+    .area-tag {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.75);
+      font-size: .78rem;
+      font-weight: 500;
+      padding: .25rem .7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    .testimonials { padding: clamp(3.5rem, 8vw, 6rem) 0; background: var(--sky-light); }
+
+    .testimonials-header { text-align: center; margin-bottom: 3rem; }
+    .testimonials-header .section-lead { margin-inline: auto; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: .75rem;
+      right: 1.25rem;
+      font-family: var(--ff-display);
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--sky);
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+    .star { color: #F5B054; font-size: 1rem; }
+
+    .testimonial-card p {
+      font-size: .95rem;
+      color: var(--gray-700);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .reviewer-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .reviewer-name {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .reviewer-meta {
+      font-size: .78rem;
+      color: var(--gray-500);
+    }
+
+    /* ============================================================
+       CALL TO ACTION BANNER
+    ============================================================ */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+    .cta-banner-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .cta-banner h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+    }
+    .cta-banner p { color: rgba(255,255,255,.8); font-size: 1.05rem; max-width: 50ch; }
+
+    .cta-phone {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: #F5B054;
+      letter-spacing: .02em;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .85rem;
+      justify-content: center;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info .section-lead { margin-bottom: 2rem; }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+    }
+    .contact-item-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--sky);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .contact-item h4 {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: .2rem;
+    }
+    .contact-item a,
+    .contact-item p {
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .contact-item a:hover { color: var(--blue); }
+
+    /* Form */
+    .contact-form-wrap {
+      background: var(--white);
+      border: 1.5px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-form-wrap h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: .4rem;
+      letter-spacing: .02em;
+    }
+    .form-control {
+      width: 100%;
+      font-family: var(--ff-body);
+      font-size: .95rem;
+      color: var(--text);
+      background: var(--gray-100);
+      border: 1.5px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: .7rem 1rem;
+      outline: none;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .form-control:focus {
+      background: var(--white);
+      border-color: var(--blue-mid);
+      box-shadow: 0 0 0 3px rgba(37,120,204,.12);
+    }
+    textarea.form-control { resize: vertical; min-height: 130px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-note {
+      font-size: .78rem;
+      color: var(--gray-500);
+      margin-top: 1rem;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      background: #EAF5EC;
+      border: 1.5px solid #6EC98A;
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      color: #1D6A30;
+      font-size: .92rem;
+      font-weight: 500;
+      margin-top: .75rem;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.65);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .footer-logo-name {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+      margin-bottom: .15rem;
+    }
+    .footer-copy { font-size: .8rem; }
+    .footer-license {
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+      margin-top: .3rem;
+    }
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      text-align: right;
+    }
+    .footer-right a { color: rgba(255,255,255,.7); font-size: .85rem; }
+    .footer-right a:hover { color: var(--white); }
+
+    /* ============================================================
+       SCROLL ANIMATIONS
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+    .delay-5 { transition-delay: .5s; }
+
+    /* ============================================================
+       RESPONSIVE BREAKPOINTS
+    ============================================================ */
+    @media (min-width: 640px) {
+      .hero-grid { grid-template-columns: 1.1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr 1.1fr; }
+      .why-inner  { grid-template-columns: 1.1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr 1.25fr; }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links  { display: flex; }
+      .hamburger  { display: none; }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links  { display: none; }
+      .hamburger  { display: flex; }
+      .nav-cta .btn { display: none; }
+      .mobile-nav { display: flex; }
+      .form-row   { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .footer-right { text-align: left; }
+    }
+  </style>
 </head>
 <body>
-    <header></header>
-    <img src="images/logo.png" alt="DeNooy Electric Logo">
-    <div class="container">
-    <div>
-        <h1>ELECTRICAL SERVICES</h1>
-        <ul>
-        <li>Commercial</li>
-        <li>Residential</li>
-        <li>Agricultural</li>
-        <li>Underground</li>
-    </ul>
+
+<!-- ============================================================
+     TOP BAR
+============================================================ -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <div class="topbar-item">
+        <!-- phone icon -->
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <a href="tel:+15551234567">(555) 123-4567</a>
+      </div>
+      <div class="topbar-item">
+        <!-- clock icon -->
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Mon–Sat 7am–6pm · Emergency service available
+      </div>
     </div>
-    <div>
-        <button>CONTACT US</button>
+    <div class="topbar-right">
+      <div class="topbar-item">
+        <!-- shield icon -->
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Licensed &amp; Insured
+      </div>
     </div>
+  </div>
 </div>
-<img class="wires" src="images/wiring.jpg" alt="Stripped Wires">
-<footer><div class="footer">Sully, IA 50251</div></footer>
+
+<!-- ============================================================
+     SITE HEADER / NAV
+============================================================ -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav-inner">
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">De Nooy Electric</span>
+          <span class="logo-sub">Licensed Electrician · Serving the Community</span>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Nav CTA -->
+      <div class="nav-cta">
+        <a href="tel:+15551234567" class="nav-phone">(555) 123-4567</a>
+        <a href="#contact" class="btn btn-blue">Get a Quote</a>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile nav drawer -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+  <a href="#about"        onclick="closeMobileNav()">About</a>
+  <a href="#services"     onclick="closeMobileNav()">Services</a>
+  <a href="#why"          onclick="closeMobileNav()">Why Us</a>
+  <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
+  <a href="#contact"      onclick="closeMobileNav()">Contact</a>
+  <a href="tel:+15551234567" style="margin-top:1rem; color:#F5B054; font-weight:700; font-size:1.1rem;">(555) 123-4567</a>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left: text -->
+      <div>
+        <div class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Serving Our Community for 10+ Years
+        </div>
+
+        <h1>De Nooy Electric<br/><em>Done Right</em></h1>
+
+        <p class="hero-sub">
+          Honest electrical work by a trusted local professional.
+          Fast response, transparent pricing, and a genuine commitment
+          to your home and safety — with no big-company runaround.
+        </p>
+
+        <div class="hero-actions">
+          <a href="tel:+15551234567" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            Call Now
+          </a>
+          <a href="#contact" class="btn btn-outline">Request a Quote</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Licensed &amp; Insured
+          </div>
+          <div class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Transparent Pricing
+          </div>
+          <div class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Same-Day Response
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: stats -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Jobs Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Emergency Line</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Photo side -->
+      <div class="about-photo-wrap fade-up">
+        <div class="about-photo">
+          <div class="photo-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p>Your photo here</p>
+          </div>
+        </div>
+        <div class="about-badge">
+          <strong>10+</strong>
+          <span>Years of<br/>Service</span>
+        </div>
+      </div>
+
+      <!-- Content side -->
+      <div class="about-content fade-up delay-2">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">You Work With Me —<br/>Not a Call Center</h2>
+        <p class="section-lead">
+          Hi, I'm the owner and only electrician at De Nooy Electric.
+          When you call, you reach me directly. When I show up, I'm the one doing the work —
+          and I stand behind every job I complete.
+        </p>
+        <p class="section-lead">
+          With over a decade of hands-on experience, I've built my business the old-fashioned way:
+          through honest work, fair prices, and happy customers who recommend me to their neighbors.
+          No subcontractors, no surprises on the bill.
+        </p>
+
+        <div class="about-points">
+          <div class="about-point">
+            <div class="point-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p><strong>Fully licensed and insured</strong> — your home and safety are always protected.</p>
+          </div>
+          <div class="about-point">
+            <div class="point-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <p><strong>Fast response times</strong> — most jobs quoted and scheduled within 24 hours.</p>
+          </div>
+          <div class="about-point">
+            <div class="point-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <p><strong>Upfront, transparent pricing</strong> — no hidden fees or surprise charges after the job.</p>
+          </div>
+          <div class="about-point">
+            <div class="point-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <p><strong>Proudly local and independent</strong> — your money stays in our community.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title">Electrical Services for<br/>Homes &amp; Small Businesses</h2>
+      <p class="section-lead">
+        Whether it's a simple repair or a full rewire, I handle it all personally —
+        with the skill and care that comes from over a decade in the trade.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Electrical Repairs -->
+      <div class="service-card fade-up delay-1">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M5.34 18.66l-1.41 1.41M20.94 12H22.36M1.64 12H3.06M19.07 19.07l-1.41-1.41M5.34 5.34L3.93 3.93M12 22.36V20.94M12 3.06V1.64"/></svg>
+        </div>
+        <h3>Electrical Repairs</h3>
+        <p>Outlets not working? Breakers tripping? Flickering lights? I diagnose and fix electrical problems quickly and correctly.</p>
+      </div>
+
+      <!-- Panel Upgrades -->
+      <div class="service-card fade-up delay-2">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg>
+        </div>
+        <h3>Panel Upgrades</h3>
+        <p>Upgrade your outdated electrical panel to safely support modern appliances and EV chargers. Code-compliant and fully permitted.</p>
+      </div>
+
+      <!-- Lighting Installation -->
+      <div class="service-card fade-up delay-3">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/><circle cx="12" cy="12" r="5"/></svg>
+        </div>
+        <h3>Lighting Installation</h3>
+        <p>Recessed lighting, ceiling fans, outdoor fixtures, and LED retrofits. I make sure everything is perfectly placed and safely wired.</p>
+      </div>
+
+      <!-- Wiring & Rewiring -->
+      <div class="service-card fade-up delay-1">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Wiring &amp; Rewiring</h3>
+        <p>New construction wiring or updating knob-and-tube in older homes — done cleanly, to code, with minimal disruption to your walls.</p>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="service-card fade-up delay-2">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Troubleshooting</h3>
+        <p>Mysterious electrical gremlins are my specialty. I track down the root cause — not just the symptom — so the problem stays fixed.</p>
+      </div>
+
+      <!-- Emergency Services -->
+      <div class="service-card fade-up delay-3" style="border-color: #E07B28;">
+        <div class="service-icon" style="background: #FEF3E8;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E07B28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Emergency Services</h3>
+        <p>Electrical emergencies don't wait. Call me any time — I offer after-hours service for urgent situations that can't wait until Monday.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WHY CHOOSE US
+============================================================ -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-inner">
+
+      <!-- Left: reasons -->
+      <div class="fade-up">
+        <div class="section-label">Why Choose Me</div>
+        <h2 class="section-title">The Difference of<br/>Working with a Local Pro</h2>
+        <p class="section-lead">
+          When you hire me, you're not a ticket in a queue.
+          You're a neighbor — and I treat every job like I'm working on my own home.
+        </p>
+
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Licensed &amp; Insured</h4>
+              <p>Fully certified to work in this state. Your home and family are protected.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Local &amp; Independent</h4>
+              <p>A real person from your community — not a franchise or corporation.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Transparent Pricing</h4>
+              <p>You'll know the cost before any work begins. No surprise invoices.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Fast Response Times</h4>
+              <p>Most calls returned within the hour. Jobs scheduled quickly, not weeks out.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Direct Communication</h4>
+              <p>No call centers, no middlemen. You talk directly to the electrician doing your work.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: service area + stat -->
+      <div class="fade-up delay-3">
+        <div class="why-visual">
+          <div class="why-big-num">500+</div>
+          <div class="why-big-label">Happy customers and counting</div>
+          <hr class="why-divider" />
+          <div class="service-area-box">
+            <h4>Service Area</h4>
+            <div class="area-tags">
+              <span class="area-tag">Marshalltown</span>
+              <span class="area-tag">Ames</span>
+              <span class="area-tag">Iowa Falls</span>
+              <span class="area-tag">Eldora</span>
+              <span class="area-tag">Story City</span>
+              <span class="area-tag">Nevada</span>
+              <span class="area-tag">Surrounding Areas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TESTIMONIALS
+============================================================ -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header fade-up">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">What Your Neighbors Are Saying</h2>
+      <p class="section-lead">
+        I let the work speak for itself. Here's what a few recent customers had to say.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card fade-up delay-1">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p>
+          I called on a Thursday and he was at my house Friday morning. Fixed the tripping
+          breaker in under an hour, explained exactly what was wrong, and charged what he quoted.
+          I've already told three of my friends about him. Genuinely one of the best experiences
+          I've had with a contractor.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:#D6EAFB; color:#1A5FA8;">SH</div>
+          <div>
+            <div class="reviewer-name">Sandra H.</div>
+            <div class="reviewer-meta">Homeowner · Marshalltown, IA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up delay-2">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p>
+          We had him upgrade our entire panel when we added a home addition. He walked us
+          through every step, pulled all the necessary permits, and the inspector passed it
+          first try. Very knowledgeable, professional, and the price was very fair. We won't
+          use anyone else.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:#FEF3E8; color:#E07B28;">DM</div>
+          <div>
+            <div class="reviewer-name">Dave &amp; Michelle K.</div>
+            <div class="reviewer-meta">Homeowners · Ames, IA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up delay-3">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p>
+          I run a small bakery and our lights kept flickering during the morning rush —
+          a nightmare. He came out after hours, found a loose connection in the sub-panel,
+          and had us fully up and running by opening time. Saved us a very expensive day.
+          Highly recommend for small business owners.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:#EAF5EC; color:#1D6A30;">PT</div>
+          <div>
+            <div class="reviewer-name">Patricia T.</div>
+            <div class="reviewer-meta">Small Business Owner · Iowa Falls, IA</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA BANNER
+============================================================ -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner-inner fade-up">
+      <h2>Ready to Get Started?</h2>
+      <p>
+        Whether it's a small repair or a major project, I'm here to help.
+        Call for a free estimate — no pressure, no obligation.
+      </p>
+      <div class="cta-phone">(555) 123-4567</div>
+      <div class="cta-actions">
+        <a href="tel:+15551234567" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          Call Now — It's Free
+        </a>
+        <a href="#contact" class="btn btn-outline">Request a Quote Online</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Info side -->
+      <div class="contact-info fade-up">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Let's Talk About<br/>Your Project</h2>
+        <p class="section-lead">
+          Have a question, need a quote, or dealing with an electrical issue?
+          Reach out — I respond quickly and I'm happy to give free advice over the phone.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            </div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+15551234567">(555) 123-4567</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:hello@denooyelectric.com">hello@denooyelectric.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 00-8-8z"/></svg>
+            </div>
+            <div>
+              <h4>Service Area</h4>
+              <p>Marshalltown, Ames, Iowa Falls,<br/>and surrounding central Iowa communities</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon–Sat: 7:00 AM – 6:00 PM<br/>Emergency service available 24/7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form side -->
+      <div class="contact-form-wrap fade-up delay-2">
+        <h3>Request a Free Quote</h3>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" class="form-control" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" class="form-control" placeholder="Smith" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(555) 000-0000" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="jane@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Type of Service</label>
+            <select id="service" name="service" class="form-control">
+              <option value="">— Select a service —</option>
+              <option>Electrical Repair</option>
+              <option>Panel Upgrade</option>
+              <option>Lighting Installation</option>
+              <option>Wiring / Rewiring</option>
+              <option>Troubleshooting</option>
+              <option>Emergency Service</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Describe Your Project</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Tell me a bit about what you need — what's happening, what you'd like done, etc." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-blue" style="width:100%; justify-content:center;">
+            Send My Request
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+
+          <p class="form-note">
+            I typically respond within a few hours during business hours.
+            For emergencies, please call directly.
+          </p>
+
+          <div class="form-success" id="formSuccess">
+            Thanks! I'll be in touch shortly. If it's urgent, give me a call at (555) 123-4567.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-logo-name">De Nooy Electric</span>
+        <div class="footer-copy">
+          © <span id="footerYear"></span> De Nooy Electric. All rights reserved.
+        </div>
+        <div class="footer-license">Licensed &amp; Insured · Serving Central Iowa</div>
+      </div>
+      <div class="footer-right">
+        <a href="tel:+15551234567">(555) 123-4567</a>
+        <a href="mailto:hello@denooyelectric.com">hello@denooyelectric.com</a>
+        <a href="#contact">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* ---------- Footer year ---------- */
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+  /* ---------- Mobile nav ---------- */
+  const hamburger    = document.getElementById('hamburgerBtn');
+  const mobileNav    = document.getElementById('mobileNav');
+  const mobileClose  = document.getElementById('mobileNavClose');
+
+  function openMobileNav()  { mobileNav.classList.add('open'); }
+  function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+  hamburger.addEventListener('click', openMobileNav);
+  mobileClose.addEventListener('click', closeMobileNav);
+
+  /* ---------- Contact form (demo) ---------- */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const successMsg = document.getElementById('formSuccess');
+    successMsg.style.display = 'block';
+    this.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+    this.querySelector('button[type="submit"]').disabled = true;
+    this.querySelector('button[type="submit"]').textContent = 'Request Sent!';
+  });
+
+  /* ---------- Scroll-triggered fade-up ---------- */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    }),
+    { threshold: 0.12 }
+  );
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
